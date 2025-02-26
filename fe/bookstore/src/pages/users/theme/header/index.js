@@ -18,6 +18,7 @@ const Header = () => {
 
         },
         {
+            //Cần Chỉnh Sửa
             name: "Sản phẩm",
             path: "",
             isShowSubMenu: false,
@@ -107,8 +108,21 @@ const Header = () => {
                         <nav className="header_menu">
                             <ul>
                                 {menus?.map((menu, menukey) => (
-                                        <li key ={menukey} className="active">
+                                        <li key ={menukey} className={menukey === 0 ? "active" : ""}>
                                             <Link to={menu?.path}>{menu?.name}</Link>
+                                            {
+                                                menu.child && (
+                                                    <ul className="header_menu_dropdown">
+                                                        {
+                                                            menu.child.map((childItem, childKey) => (
+                                                                <li key={`${menukey}-${childKey}`}>
+                                                                    <Link to={childItem.path}>{childItem.name}</Link>
+                                                                </li>
+                                                            ))
+                                                        }
+                                                    </ul>
+                                                )
+                                            }
                                         </li>
                                 ))}  
                             </ul>
