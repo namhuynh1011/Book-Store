@@ -1,13 +1,15 @@
 import "./style.scss";
-import { AiOutlineShoppingCart,AiTwotoneMail ,AiOutlineUser ,AiOutlineFacebook, AiOutlineInstagram, AiOutlineLinkedin, AiOutlineTwitter} from "react-icons/ai";
+import { AiOutlineShoppingCart,AiTwotoneMail ,AiOutlineUser ,AiOutlineFacebook, AiOutlineInstagram, AiOutlineLinkedin, AiOutlineTwitter, AiOutlineMenu} from "react-icons/ai";
 import { memo, useState } from "react"
 import { Link } from "react-router-dom";
 import { formatter } from "utils/fomater";
 import { ROUTERS } from "utils/router";
 
 const Header = () => {
+    const [isShowCatergories, getShowCategories] = useState(true);
 
-    const [menus, setMenus] = useState([
+
+    const [menus] = useState([
         {
             name: "Trang chủ",
             path: ROUTERS.USER.HOME,
@@ -144,6 +146,34 @@ const Header = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className="container">
+                <div className="row hero_categories_container">
+                    <div className="col-lg-3 hero_categories">
+                        <div className="hero_categories_all" onClick={() => getShowCategories(!isShowCatergories)}>
+                            <AiOutlineMenu />
+                            Danh Sách Sản Phẩm
+                        </div>
+                            <ul className={isShowCatergories ? "" : "hidden"}>
+                                <li>
+                                    <Link to="#">Thịt</Link>
+                                </li>
+                                <li>
+                                    <Link to="#">Rau Củ</Link>
+                                </li>
+                                <li>
+                                    <Link to="#">Trái Cây</Link>
+                                </li>
+                                <li>
+                                    <Link to="#">Nước Trái Cây</Link>
+                                </li>
+                                <li>
+                                    <Link to="#">Hải Sản</Link>
+                                </li>
+                            </ul>
+                    </div>
+                    <div className="col-lg-9">phai</div>
+                </div> 
             </div>
         </>
     );
