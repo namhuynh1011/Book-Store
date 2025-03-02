@@ -26,15 +26,15 @@ const Header = () => {
             isShowSubMenu: false,
             child: [
                 {
-                    name: "Thịt",
+                    name: "Sách",
                     path: "",
                 },
                 {
-                    name: "Rau Củ",
+                    name: "Truyện Tranh",
                     path: "",
                 },
                 {
-                    name: "Thức ăn nhanh",
+                    name: "Tiểu Thuyết",
                     path: "",
                 },
             ]
