@@ -1,5 +1,5 @@
 import "./style.scss";
-import { AiOutlineShoppingCart,AiTwotoneMail ,AiOutlineUser ,AiOutlineFacebook, AiOutlineInstagram, AiOutlineLinkedin, AiOutlineTwitter, AiOutlineMenu} from "react-icons/ai";
+import { AiOutlineShoppingCart,AiTwotoneMail ,AiOutlineUser ,AiOutlineFacebook, AiOutlineInstagram, AiOutlineLinkedin, AiOutlineTwitter, AiOutlineMenu, AiOutlinePhone} from "react-icons/ai";
 import { memo, useState } from "react"
 import { Link } from "react-router-dom";
 import { formatter } from "utils/fomater";
@@ -156,23 +156,54 @@ const Header = () => {
                         </div>
                             <ul className={isShowCatergories ? "" : "hidden"}>
                                 <li>
-                                    <Link to="#">Thịt</Link>
+                                    <Link to="#">Truyện Tranh</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">Rau Củ</Link>
+                                    <Link to="#">Truyện Ngắn</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">Trái Cây</Link>
+                                    <Link to="#">Kinh Dị</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">Nước Trái Cây</Link>
+                                    <Link to="#">Lịch Sử</Link>
                                 </li>
                                 <li>
-                                    <Link to="#">Hải Sản</Link>
+                                    <Link to="#">Tiểu Thuyết</Link>
                                 </li>
                             </ul>
                     </div>
-                    <div className="col-lg-9">phai</div>
+                    <div className="col-lg-9 hero_search_container">
+                        <div className="hero_search">
+                                <div className="hero_search_form">
+                                    <form>
+                                        <input type="text" name="" placeholder="Tìm kiếm sản phẩm" />
+                                        <button type="submit" className="">Tìm kiếm</button>
+                                    </form>
+                                </div>
+                                <div className="hero_search_phone">
+                                    <div className="hero_search_phone_icon">
+                                        <AiOutlinePhone />
+                                    </div>
+                                    <div className="hero_search_phone_text">
+                                        <p>037.478.6427</p>
+                                        <span>Hỗ Trợ 16/6</span>
+                                    </div>
+                                </div>
+                        </div>
+                        <div className="hero_item">
+                            <div className="hero_text">
+                                <span>Sách Hay Sách Đẹp</span>
+                                <h2>
+                                    Sách<br />
+                                    Cũ 100%
+                                </h2>
+                                <p>Lấy Phí Giao Hàng Tận Nơi</p>
+                                <Link to="" className="primary_btn">
+                                        Mua Ngay
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
                 </div> 
             </div>
         </>
