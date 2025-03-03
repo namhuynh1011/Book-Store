@@ -6,7 +6,10 @@ import imgCat2 from "assets/users/image/categories/giaokhoa.jpg";
 import imgCat3 from "assets/users/image/categories/lichsu.jpg";
 import imgCat4 from "assets/users/image/categories/tieusu.jpg";
 import imgCat5 from "assets/users/image/categories/vanhoc.jpg";
+import img1Feat from "assets/users/image/featured/kinhte.jpg";
+import img2Feat from "assets/users/image/featured/kinhte.jpg";
 import "./style.scss";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 
 const HomePage = () => {
     const responsive = {
@@ -51,23 +54,87 @@ const HomePage = () => {
             name: "Sách Văn Học"
         },
 
-    ]
+    ];
+
+    const featProducts = {
+        all: {
+            title: "Toàn Bộ",
+            products: [
+                {
+                    img: img1Feat,
+                    name: "Sách 1",
+                    price: 10000
+                },
+                {
+                    img: img2Feat,
+                    name: "Sách 2",
+                    price: 10000
+                },
+            ],
+        },
+        TieuThuye: {
+            title: "Tiểu Thuyết",
+            products: [
+                {
+                    img: img1Feat,
+                    name: "Sách 1",
+                    price: 10000
+                },
+            ],
+        },
+    };
+
+    const renderFeaturedProducts = (data) => {
+        const tabList = [];
+        const tabPanels = [];
+        
+        Object.keys(data).forEach((key, index) => {
+            tabList.push(<Tab key={index}>{data[key].title}</Tab>);
+            const tabPanel = [];
+            data[key].products.forEach((item, j) => {
+                tabPanel.push(<div key={j}>{item.name}</div>);
+            });
+            tabPanels.push(tabPanel);
+        });
+
+        return (
+            <Tabs>
+                <TabList>{tabList}</TabList>
+                {
+                    tabPanels.map((item, key) => (
+                        <TabPanel key={key}>
+                            <div className="row">{item}</div>
+                        </TabPanel>
+                    ))}
+            </Tabs>
+        );
+    }
     return (
-       <>
-        {/*categories begin*/}
-        <div className="container container_categories_slider">
-            <Carousel responsive={responsive} className="categories_slider">
-                {slideItems.map((item, key) => (
-                    <div className="categories_slider_item" key={key}>
-                         <img src={item.bgImg} alt={item.name} className="category-image"/>
-                        <p>{item.name}</p>
+        <>
+            {/*categories begin*/}
+            <div className="container container_categories_slider">
+                <Carousel responsive={responsive} className="categories_slider">
+                    {slideItems.map((item, key) => (
+                        <div className="categories_slider_item" key={key}>
+                            <img src={item.bgImg} alt={item.name} className="category-image" />
+                            <p>{item.name}</p>
+                        </div>
+                    ))}
+
+                </Carousel>
+            </div>
+            {/*categories end*/}
+            {/*Featured begin*/}
+            <div className="container">
+                <div className="featured">
+                    <div className="section_title">
+                        <h2>Sản Phẩm Nổi Bật</h2>
                     </div>
-                ))}
-               
-            </Carousel>
-        </div>
-        {/*categories end*/}
-       </>
+                    {renderFeaturedProducts(featProducts)}
+                </div>
+            </div>
+            {/*Featured end*/}
+        </>
     );
 };
 
