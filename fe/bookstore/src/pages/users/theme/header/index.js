@@ -1,5 +1,5 @@
 import "./style.scss";
-import { AiOutlineShoppingCart, AiTwotoneMail, AiOutlineUser, AiOutlineFacebook, AiOutlineInstagram, AiOutlineLinkedin, AiOutlineTwitter, AiOutlineMenu, AiOutlinePhone } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiTwotoneMail, AiOutlineUser, AiOutlineFacebook, AiOutlineInstagram, AiOutlineLinkedin, AiOutlineTwitter, AiOutlineMenu, AiOutlinePhone, AiOutlineDownCircle, AiOutlineUpCircle, AiOutlineMail } from "react-icons/ai";
 import { memo, useState } from "react"
 import { Link } from "react-router-dom";
 import { formatter } from "utils/fomater";
@@ -9,7 +9,7 @@ const Header = () => {
     const [isShowCatergories, setShowCategories] = useState(true);
     const [isShowHumberger, setShowHumberger] = useState(false);
 
-    const [menus] = useState([
+    const [menus, setMenus] = useState([
         {
             name: "Trang chủ",
             path: ROUTERS.USER.HOME,
@@ -83,7 +83,34 @@ const Header = () => {
                 </div>
                 <div className="humberger_menu_nav">
                     <ul>
-                        <li>Menu Item</li>
+                        {
+                            menus.map((menu, menukey) => (
+                                <li key={menukey} to={menu.path}>
+                                    <Link to={menu.path} onClick={() => {
+                                        const newMenus = [...menus];
+                                        newMenus[menukey].isShowSubMenu = !newMenus[menukey].isShowSubMenu;
+                                        setMenus(newMenus)
+                                    }}>
+                                        {menu.name}
+                                        {menu.child &&
+                                            (menu.isShowSubMenu ? (
+                                                <AiOutlineDownCircle/>
+                                            ): (
+                                                <AiOutlineUpCircle/>   
+                                        ))}
+                                    </Link>
+
+                                    {menu.child && (
+                                        <ul className={`header_menu_dropdown ${menu.isShowSubMenu ? "show_submenu" : ""}`}>
+                                            {menu.child.map((childItem, childKey) => (
+                                                <li key={`${menukey}-${childKey}`}>
+                                                    <Link to={childItem.path}>{childItem.name}</Link>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
+                                </li>
+                            ))}
                     </ul>
                 </div>
                 <div className="humberger_top_right_social">
@@ -104,7 +131,7 @@ const Header = () => {
                 <div className="humberger_menu_contact">
                     <ul>
                         <li>
-                            <i className="fa fa_envelope" />bookstore@gmail.com
+                            <AiOutlineMail />bookstore@gmail.com
                         </li>
                         <li>Miễn phí giao hàng cho đơn trên {formatter(200000)}</li>
                     </ul>
