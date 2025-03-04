@@ -1,13 +1,13 @@
 import "./style.scss";
-import { AiOutlineShoppingCart,AiTwotoneMail ,AiOutlineUser ,AiOutlineFacebook, AiOutlineInstagram, AiOutlineLinkedin, AiOutlineTwitter, AiOutlineMenu, AiOutlinePhone} from "react-icons/ai";
+import { AiOutlineShoppingCart, AiTwotoneMail, AiOutlineUser, AiOutlineFacebook, AiOutlineInstagram, AiOutlineLinkedin, AiOutlineTwitter, AiOutlineMenu, AiOutlinePhone } from "react-icons/ai";
 import { memo, useState } from "react"
 import { Link } from "react-router-dom";
 import { formatter } from "utils/fomater";
 import { ROUTERS } from "utils/router";
 
 const Header = () => {
-    const [isShowCatergories, getShowCategories] = useState(true);
-
+    const [isShowCatergories, setShowCategories] = useState(true);
+    const [isShowHumberger, setShowHumberger] = useState(false);
 
     const [menus] = useState([
         {
@@ -54,6 +54,64 @@ const Header = () => {
 
     return (
         <>
+            <div className={`humberger_menu_overlay${isShowHumberger ? " active" : ""}`}
+            onClick={() => setShowHumberger(false)}/>
+            
+            <div className={`humberger_menu_wrapper${isShowHumberger ? " show" : ""}`}>
+                <div className="header_logo">
+                    <h1>BooKStore</h1>
+                </div>
+                <div className="humberger_menu_cart">
+                    <ul>
+                        <li>
+                            <Link to="#">
+                                <AiOutlineShoppingCart />
+                                <span>5</span>
+                            </Link>
+                        </li>
+                    </ul>
+                    <div className="header_cart_price">
+                        Giỏ Hàng: <span>{formatter(1001390)}</span>
+                    </div>
+                </div>
+                <div className="humberger_menu_wideget">
+                    <div className="header_top_right_auth">
+                        <Link to={""}>
+                            <AiOutlineUser /> Đăng Nhập
+                        </Link>
+                    </div>
+                </div>
+                <div className="humberger_menu_nav">
+                    <ul>
+                        <li>Menu Item</li>
+                    </ul>
+                </div>
+                <div className="humberger_top_right_social">
+
+                    <Link to="https://www.facebook.com/huynhquocnom/" target="_blank">
+                        <AiOutlineFacebook />
+                    </Link>
+                    <Link to="">
+                        <AiOutlineInstagram />
+                    </Link>
+                    <Link to="">
+                        <AiOutlineLinkedin />
+                    </Link>
+                    <Link to="">
+                        <AiOutlineTwitter />
+                    </Link>
+                </div>
+                <div className="humberger_menu_contact">
+                    <ul>
+                        <li>
+                            <i className="fa fa_envelope" />bookstore@gmail.com
+                        </li>
+                        <li>Miễn phí giao hàng cho đơn trên {formatter(200000)}</li>
+                    </ul>
+                </div>
+            </div>
+
+
             <div className="header_top">
                 <div className="container">
                     <div className="row">
@@ -79,18 +137,18 @@ const Header = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="">    
-                                    <AiOutlineLinkedin />
+                                    <Link to="">
+                                        <AiOutlineLinkedin />
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="">    
-                                    <AiOutlineTwitter />
+                                    <Link to="">
+                                        <AiOutlineTwitter />
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="">    
-                                    <AiOutlineUser />
+                                    <Link to="">
+                                        <AiOutlineUser />
                                     </Link>
                                     <span> Đăng Nhập </span>
                                 </li>
@@ -101,36 +159,36 @@ const Header = () => {
             </div>
             <div className="container">
                 <div className="row">
-                    <div className="col-xl-3">
+                    <div className="col-lg-3">
                         <div className="header_logo" >
                             <h1>Book Store</h1>
                         </div>
                     </div>
-                    <div className="col-xl-6">
+                    <div className="col-lg-6">
                         <nav className="header_menu">
                             <ul>
                                 {menus?.map((menu, menukey) => (
-                                        <li key ={menukey} className={menukey === 0 ? "active" : ""}>
-                                            <Link to={menu?.path}>{menu?.name}</Link>
-                                            {
-                                                menu.child && (
-                                                    <ul className="header_menu_dropdown">
-                                                        {
-                                                            menu.child.map((childItem, childKey) => (
-                                                                <li key={`${menukey}-${childKey}`}>
-                                                                    <Link to={childItem.path}>{childItem.name}</Link>
-                                                                </li>
-                                                            ))
-                                                        }
-                                                    </ul>
-                                                )
-                                            }
-                                        </li>
-                                ))}  
+                                    <li key={menukey} className={menukey === 0 ? "active" : ""}>
+                                        <Link to={menu?.path}>{menu?.name}</Link>
+                                        {
+                                            menu.child && (
+                                                <ul className="header_menu_dropdown">
+                                                    {
+                                                        menu.child.map((childItem, childKey) => (
+                                                            <li key={`${menukey}-${childKey}`}>
+                                                                <Link to={childItem.path}>{childItem.name}</Link>
+                                                            </li>
+                                                        ))
+                                                    }
+                                                </ul>
+                                            )
+                                        }
+                                    </li>
+                                ))}
                             </ul>
                         </nav>
                     </div>
-                    <div className="col-xl-3">
+                    <div className="col-lg-3">
                         <div className="header_cart" >
                             <div className="header_cart_price">
                                 <span>{formatter(1113000)}</span>
@@ -144,51 +202,54 @@ const Header = () => {
                                 </li>
                             </ul>
                         </div>
+                        <div className="humberger_open">
+                            <AiOutlineMenu onClick={() => { setShowHumberger(true) }} />
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="container">
                 <div className="row hero_categories_container">
                     <div className="col-lg-3 hero_categories">
-                        <div className="hero_categories_all" onClick={() => getShowCategories(!isShowCatergories)}>
+                        <div className="hero_categories_all" onClick={() => setShowCategories(!isShowCatergories)}>
                             <AiOutlineMenu />
                             Danh Sách Sản Phẩm
                         </div>
-                            <ul className={isShowCatergories ? "" : "hidden"}>
-                                <li>
-                                    <Link to="#">Truyện Tranh</Link>
-                                </li>
-                                <li>
-                                    <Link to="#">Truyện Ngắn</Link>
-                                </li>
-                                <li>
-                                    <Link to="#">Kinh Dị</Link>
-                                </li>
-                                <li>
-                                    <Link to="#">Lịch Sử</Link>
-                                </li>
-                                <li>
-                                    <Link to="#">Tiểu Thuyết</Link>
-                                </li>
-                            </ul>
+                        <ul className={isShowCatergories ? "" : "hidden"}>
+                            <li>
+                                <Link to="#">Truyện Tranh</Link>
+                            </li>
+                            <li>
+                                <Link to="#">Truyện Ngắn</Link>
+                            </li>
+                            <li>
+                                <Link to="#">Kinh Dị</Link>
+                            </li>
+                            <li>
+                                <Link to="#">Lịch Sử</Link>
+                            </li>
+                            <li>
+                                <Link to="#">Tiểu Thuyết</Link>
+                            </li>
+                        </ul>
                     </div>
                     <div className="col-lg-9 hero_search_container">
                         <div className="hero_search">
-                                <div className="hero_search_form">
-                                    <form>
-                                        <input type="text" name="" placeholder="Tìm kiếm sản phẩm" />
-                                        <button type="submit" className="">Tìm kiếm</button>
-                                    </form>
+                            <div className="hero_search_form">
+                                <form>
+                                    <input type="text" name="" placeholder="Tìm kiếm sản phẩm" />
+                                    <button type="submit" className="">Tìm kiếm</button>
+                                </form>
+                            </div>
+                            <div className="hero_search_phone">
+                                <div className="hero_search_phone_icon">
+                                    <AiOutlinePhone />
                                 </div>
-                                <div className="hero_search_phone">
-                                    <div className="hero_search_phone_icon">
-                                        <AiOutlinePhone />
-                                    </div>
-                                    <div className="hero_search_phone_text">
-                                        <p>037.478.6427</p>
-                                        <span>Hỗ Trợ 16/6</span>
-                                    </div>
+                                <div className="hero_search_phone_text">
+                                    <p>037.478.6427</p>
+                                    <span>Hỗ Trợ 16/6</span>
                                 </div>
+                            </div>
                         </div>
                         <div className="hero_item">
                             <div className="hero_text">
@@ -199,12 +260,12 @@ const Header = () => {
                                 </h2>
                                 <p>Lấy Phí Giao Hàng Tận Nơi</p>
                                 <Link to="" className="primary_btn">
-                                        Mua Ngay
+                                    Mua Ngay
                                 </Link>
                             </div>
                         </div>
                     </div>
-                </div> 
+                </div>
             </div>
         </>
     );

@@ -219,7 +219,7 @@
                 display: flex;
                 align-items: center;
                 gap: 5px; 
-                background-color: #009966;
+                background: map.get($theme-color, "main");
                 color: white;
                 border: none;
                 border-radius: 20px;
@@ -234,7 +234,7 @@
                 }
             
                 &:hover {
-                    background: map.get($theme-color, "main");
+                    background: #CD853F;
                 }
             }
             
