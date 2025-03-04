@@ -6,10 +6,22 @@ import imgCat2 from "assets/users/image/categories/giaokhoa.jpg";
 import imgCat3 from "assets/users/image/categories/lichsu.jpg";
 import imgCat4 from "assets/users/image/categories/tieusu.jpg";
 import imgCat5 from "assets/users/image/categories/vanhoc.jpg";
-import img1Feat from "assets/users/image/featured/kinhte.jpg";
-import img2Feat from "assets/users/image/featured/kinhte.jpg";
+import img1Feat from "assets/users/image/featured/Sakamoto.jpg";
+import img2Feat from "assets/users/image/featured/nhagiakim.jpg";
+import img3Feat from "assets/users/image/featured/conan.jpg";
+import img4Feat from "assets/users/image/featured/nikolatesla.jpg";
+import img5Feat from "assets/users/image/featured/ketromsach.jpg";
+import img6Feat from "assets/users/image/featured/thuchoem.jpg";
+import img7Feat from "assets/users/image/featured/Atackontitan.jpg";
+import img8Feat from "assets/users/image/featured/goctoiansaumoicaunoi.jpg";
+
+
+
 import "./style.scss";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import { AiOutlineEye, AiOutlineShoppingCart } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { formatter } from "utils/fomater";
 
 const HomePage = () => {
     const responsive = {
@@ -62,37 +74,137 @@ const HomePage = () => {
             products: [
                 {
                     img: img1Feat,
-                    name: "Sách 1",
-                    price: 10000
+                    name: "Truyện Sakamoto",
+                    price: 42750
                 },
                 {
                     img: img2Feat,
-                    name: "Sách 2",
-                    price: 10000
+                    name: "Nhà Giả Kim",
+                    price: 63200
                 },
+                {
+                    img: img3Feat,
+                    name: "Truyện Conan",
+                    price: 22500
+                },
+                {
+                    img: img4Feat,
+                    name: "Nikola Tesla Tự Truyện",
+                    price: 108000
+                },
+                {
+                    img: img5Feat,
+                    name: "Kẻ Trộm Sách",
+                    price: 186750
+                },
+                {
+                    img: img6Feat,
+                    name: "Kẻ Trộm Sách",
+                    price: 186750
+                },
+                {
+                    img: img7Feat,
+                    name: "Truyện Attack on Titan",
+                    price: 45600
+                },
+                {
+                    img: img8Feat,
+                    name: "Góc Tối Ẩn Sau Mỗi Câu Nói",
+                    price: 104250
+                }
             ],
         },
-        TieuThuye: {
-            title: "Tiểu Thuyết",
+        Truyen: {
+            title: "Truyện",
             products: [
                 {
                     img: img1Feat,
-                    name: "Sách 1",
+                    name: "Truyện Sakamoto",
+                    price: 10000
+                },
+                {
+                    img: img3Feat,
+                    name: "Truyện Conan",
+                    price: 10000
+                },
+                {
+                    img: img7Feat,
+                    name: "Truyện Attack on Titan",
                     price: 10000
                 },
             ],
         },
+        TieuThuyet: {
+            title: "Tiểu Thuyết",
+            products: [
+                {
+                    img: img2Feat,
+                    name: "Nhà Giả Kim",
+                    price: 63200
+                },
+                {
+                    img: img6Feat,
+                    name: "Kẻ Trộm Sách",
+                    price: 186750
+                }
+            ]
+        },
+        HoiKy: {
+            title: "Hồi Ký",
+            products: [
+                {
+                    img: img4Feat,
+                    name: "Nikola Tesla Tự Truyện",
+                    price: 108000
+                },
+                {
+                    img: img6Feat,
+                    name: "Thư Cho Em",
+                    price: 186750
+                }
+            ]
+        },
+        TamLy: {
+            title: "Tâm Lý",
+            products: [
+                {
+                    img: img8Feat,
+                    name: "Góc Tối Ẩn Sau Mỗi Câu Nói",
+                    price: 104250
+                }
+            ]
+        }
     };
 
     const renderFeaturedProducts = (data) => {
         const tabList = [];
         const tabPanels = [];
-        
+
         Object.keys(data).forEach((key, index) => {
             tabList.push(<Tab key={index}>{data[key].title}</Tab>);
             const tabPanel = [];
             data[key].products.forEach((item, j) => {
-                tabPanel.push(<div key={j}>{item.name}</div>);
+                tabPanel.push(<div className="col-lg-3" key={j}>
+                    <div className="featured_item">
+                        <div className="featured_item_pic" >
+                            <img src={item.img} alt={item.name} className="featured_image" />
+                            <ul className="featured_item_pic_hover">
+                                <li>
+                                    <AiOutlineEye />
+                                </li>
+                                <li>
+                                    <AiOutlineShoppingCart />
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="featured_item_text">
+                            <h6>
+                                <Link to="">{item.name}</Link>
+                            </h6>
+                            <h5>{formatter(item.price)}</h5>
+                        </div>
+                    </div>
+                </div>);
             });
             tabPanels.push(tabPanel);
         });
@@ -134,6 +246,40 @@ const HomePage = () => {
                 </div>
             </div>
             {/*Featured end*/}
+            {/*Banner begin*/}
+            <div className="container">
+                <div className="banner">
+                    <div className="banner_item">
+                        <div className="banner_content">
+                            <h3>Trái cây tươi</h3>
+                            <p>100% tự nhiên<br />Không chất bảo quản.</p>
+                            <button className="buy_now">
+                                <AiOutlineShoppingCart className="icon"/>
+                                MUA NGAY
+                            </button>
+                        </div>
+                        <div className="banner_pic">
+                            <img src={img1Feat} alt="Trái cây tươi" />
+                        </div>
+                    </div>
+                    <div className="banner_item">
+                        <div className="banner_content">
+                            <h3>Sữa trái cây</h3>
+                            <p>Hàng nhập khẩu<br />Chứng nhận an toàn thực phẩm.</p>
+                            <button className="buy_now">
+                                <AiOutlineShoppingCart className="icon"/>
+                                MUA NGAY
+                            </button>
+                        </div>
+                        <div className="banner_pic">
+                            <img src={img2Feat} alt="Sữa trái cây" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {/*Banner end*/}
         </>
     );
 };
