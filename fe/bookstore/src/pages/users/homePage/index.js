@@ -184,8 +184,8 @@ const HomePage = () => {
             tabList.push(<Tab key={index}>{data[key].title}</Tab>);
             const tabPanel = [];
             data[key].products.forEach((item, j) => {
-                tabPanel.push(<div className="col-lg-3" key={j}>
-                    <div className="featured_item">
+                tabPanel.push(<div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={j}>
+                    <div className="featured_item pl-pr-10">
                         <div className="featured_item_pic" >
                             <img src={item.img} alt={item.name} className="featured_image" />
                             <ul className="featured_item_pic_hover">
@@ -251,8 +251,8 @@ const HomePage = () => {
                 <div className="banner">
                     <div className="banner_item">
                         <div className="banner_content">
-                            <h3>Trái cây tươi</h3>
-                            <p>100% tự nhiên<br />Không chất bảo quản.</p>
+                            <h3>Truyện hay</h3>
+                            <p>100% xuất bản<br />chính gốc.</p>
                             <button className="buy_now">
                                 <AiOutlineShoppingCart className="icon"/>
                                 MUA NGAY
@@ -264,8 +264,8 @@ const HomePage = () => {
                     </div>
                     <div className="banner_item">
                         <div className="banner_content">
-                            <h3>Sữa trái cây</h3>
-                            <p>Hàng nhập khẩu<br />Chứng nhận an toàn thực phẩm.</p>
+                            <h3>Tiểu Thuyết</h3>
+                            <p>Ý nghĩa<br />sâu sắc .</p>
                             <button className="buy_now">
                                 <AiOutlineShoppingCart className="icon"/>
                                 MUA NGAY

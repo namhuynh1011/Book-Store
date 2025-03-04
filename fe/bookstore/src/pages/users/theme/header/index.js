@@ -6,7 +6,7 @@ import { formatter } from "utils/fomater";
 import { ROUTERS } from "utils/router";
 
 const Header = () => {
-    const [isShowCatergories, setShowCategories] = useState(true);
+    const [isShowCatergories, setShowCategories] = useState(false);
     const [isShowHumberger, setShowHumberger] = useState(false);
 
     const [menus, setMenus] = useState([
@@ -59,7 +59,7 @@ const Header = () => {
             
             <div className={`humberger_menu_wrapper${isShowHumberger ? " show" : ""}`}>
                 <div className="header_logo">
-                    <h1>BooKStore</h1>
+                    <h1>Book Store</h1>
                 </div>
                 <div className="humberger_menu_cart">
                     <ul>
@@ -237,8 +237,9 @@ const Header = () => {
             </div>
             <div className="container">
                 <div className="row hero_categories_container">
-                    <div className="col-lg-3 hero_categories">
-                        <div className="hero_categories_all" onClick={() => setShowCategories(!isShowCatergories)}>
+                    <div className="col-lg-3 col-md-12 col-sm-12 col-xs-12 hero_categories">
+                        <div className="hero_categories_all"
+                         onClick={() => setShowCategories(!isShowCatergories)}>
                             <AiOutlineMenu />
                             Danh Sách Sản Phẩm
                         </div>
@@ -260,7 +261,7 @@ const Header = () => {
                             </li>
                         </ul>
                     </div>
-                    <div className="col-lg-9 hero_search_container">
+                    <div className="col-lg-9 col-xl-12 col-md-12 col-sm-12 col-xs-12 hero_search_container">
                         <div className="hero_search">
                             <div className="hero_search_form">
                                 <form>
