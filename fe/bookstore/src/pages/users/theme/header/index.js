@@ -1,14 +1,24 @@
 import "./style.scss";
 import { AiOutlineShoppingCart, AiTwotoneMail, AiOutlineUser, AiOutlineFacebook, AiOutlineInstagram, AiOutlineLinkedin, AiOutlineTwitter, AiOutlineMenu, AiOutlinePhone, AiOutlineDownCircle, AiOutlineUpCircle, AiOutlineMail } from "react-icons/ai";
-import { memo, useState } from "react"
-import { Link } from "react-router-dom";
+import { memo, useEffect, useState } from "react"
+import { Link, useLocation } from "react-router-dom";
 import { formatter } from "utils/fomater";
 import { ROUTERS } from "utils/router";
+import logo from "assets/users/image/hero/BookStore.jpg";
+
+export const categories = [
+    "Truyện Tranh",
+    "Tiểu Thuyết",
+    "Tâm Lý",
+    "Kinh Tế",
+    "Sách Giáo Khoa",
+];
 
 const Header = () => {
-    const [isShowCatergories, setShowCategories] = useState(false);
+    const location = useLocation();
     const [isShowHumberger, setShowHumberger] = useState(false);
-
+    const [isHome, setIsHome] = useState(location.pathname.length <= 1);
+    const [isShowCatergories, setShowCategories] = useState(isHome);
     const [menus, setMenus] = useState([
         {
             name: "Trang chủ",
@@ -50,13 +60,21 @@ const Header = () => {
             path: "",
 
         }
-    ])
+    ]);
+
+    
+
+    useEffect(() => {
+        const isHome = location.pathname.length <= 1;
+        setIsHome(isHome);
+        setShowCategories(isHome);
+    }, [location]);
 
     return (
         <>
             <div className={`humberger_menu_overlay${isShowHumberger ? " active" : ""}`}
-            onClick={() => setShowHumberger(false)}/>
-            
+                onClick={() => setShowHumberger(false)} />
+
             <div className={`humberger_menu_wrapper${isShowHumberger ? " show" : ""}`}>
                 <div className="header_logo">
                     <h1>Book Store</h1>
@@ -94,10 +112,10 @@ const Header = () => {
                                         {menu.name}
                                         {menu.child &&
                                             (menu.isShowSubMenu ? (
-                                                <AiOutlineDownCircle/>
-                                            ): (
-                                                <AiOutlineUpCircle/>   
-                                        ))}
+                                                <AiOutlineDownCircle />
+                                            ) : (
+                                                <AiOutlineUpCircle />
+                                            ))}
                                     </Link>
 
                                     {menu.child && (
@@ -159,7 +177,7 @@ const Header = () => {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="">
+                                    <Link to="https://www.facebook.com/huynhquocnom/" target="_blank">
                                         <AiOutlineInstagram />
                                     </Link>
                                 </li>
@@ -188,7 +206,9 @@ const Header = () => {
                 <div className="row">
                     <div className="col-lg-3">
                         <div className="header_logo" >
-                            <h1>Book Store</h1>
+                            <Link to={ROUTERS.USER.HOME}>
+                                <img src={logo}/>
+                            </Link>
                         </div>
                     </div>
                     <div className="col-lg-6">
@@ -239,26 +259,17 @@ const Header = () => {
                 <div className="row hero_categories_container">
                     <div className="col-lg-3 col-md-12 col-sm-12 col-xs-12 hero_categories">
                         <div className="hero_categories_all"
-                         onClick={() => setShowCategories(!isShowCatergories)}>
+                            onClick={() => setShowCategories(!isShowCatergories)}>
                             <AiOutlineMenu />
                             Danh Sách Sản Phẩm
                         </div>
                         <ul className={isShowCatergories ? "" : "hidden"}>
-                            <li>
-                                <Link to="#">Truyện Tranh</Link>
-                            </li>
-                            <li>
-                                <Link to="#">Truyện Ngắn</Link>
-                            </li>
-                            <li>
-                                <Link to="#">Kinh Dị</Link>
-                            </li>
-                            <li>
-                                <Link to="#">Lịch Sử</Link>
-                            </li>
-                            <li>
-                                <Link to="#">Tiểu Thuyết</Link>
-                            </li>
+                            {
+                                categories.map((category, key) => (
+                                    <li key={key}>
+                                        <Link to={ROUTERS.USER.PRODUCTS}>{category}</Link>
+                                    </li>
+                                ))}
                         </ul>
                     </div>
                     <div className="col-lg-9 col-xl-12 col-md-12 col-sm-12 col-xs-12 hero_search_container">
@@ -275,23 +286,26 @@ const Header = () => {
                                 </div>
                                 <div className="hero_search_phone_text">
                                     <p>037.478.6427</p>
-                                    <span>Hỗ Trợ 16/6</span>
+                                    <span>Hỗ Trợ 24/7</span>
                                 </div>
                             </div>
                         </div>
-                        <div className="hero_item">
-                            <div className="hero_text">
-                                <span>Sách Hay Sách Đẹp</span>
-                                <h2>
-                                    Sách<br />
-                                    Cũ 100%
-                                </h2>
-                                <p>Lấy Phí Giao Hàng Tận Nơi</p>
-                                <Link to="" className="primary_btn">
-                                    Mua Ngay
-                                </Link>
+                        {isHome && (
+
+                            <div className="hero_item">
+                                <div className="hero_text">
+                                    <span>Sách Hay Sách Đẹp</span>
+                                    <h2>
+                                        Sách<br />
+                                        Cũ 100%
+                                    </h2>
+                                    <p>Lấy Phí Giao Hàng Tận Nơi</p>
+                                    <Link to="" className="primary_btn">
+                                        Mua Ngay
+                                    </Link>
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </div>
                 </div>
             </div>

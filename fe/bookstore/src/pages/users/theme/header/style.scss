@@ -2,7 +2,7 @@
 @use "header";
 @import "style/pages/theme";
 @import "style/pages/all";
-//$bannerImg: "/assets/users/image/hero/banner.jpg";
+$bannerImg: "/assets/users/image/hero/banner.jpg";
 
 
 
@@ -71,7 +71,16 @@
     }
 }
 .header_logo {
-    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; // Căn chỉnh theo chiều cao của header
+}
+
+.header_logo img {
+    width: 160px;  // Điều chỉnh kích thước phù hợp
+    height: auto;
+    object-fit: contain;
 }
 
 .header_menu {
@@ -304,9 +313,12 @@
         }
     }
     .hero_item {
-        //Them Hinh Anh
-        //background-image: url("");
+        position: relative;
+        top: -20px; // Đẩy lên 20px
+        background-image: url($bannerImg);
         background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         height: 410px;
         display: flex;
         align-items: center;

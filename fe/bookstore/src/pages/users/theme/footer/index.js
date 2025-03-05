@@ -2,14 +2,20 @@ import { memo } from "react"
 import "./style.scss";
 import { Link } from "react-router-dom";
 import {AiOutlineFacebook, AiOutlineInstagram, AiOutlineLinkedin, AiOutlineTwitter} from "react-icons/ai";
+import { ROUTERS } from "utils/router";
+import logo from "assets/users/image/hero/BookStore.jpg";
 
 const Footer = () => {
-    return <footer className="footer">
+    return( <footer className="footer">
         <div className="container">
             <div className="row">
                 <div className="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                     <div className="footer_about">
-                        <h1 className="footer_about_logo">Book Store</h1>
+                        <div className="footer_logo">
+                            <Link to={ROUTERS.USER.HOME}>
+                                <img src={logo}/>
+                            </Link>
+                        </div>
                         <ul>
                             <li>Địa Chỉ: 230 Nguyễn Văn Hưởng</li>
                             <li>Phone: 0374786427</li>
@@ -57,10 +63,14 @@ const Footer = () => {
                             </div>
                             <div className="footer_widget_social">
                                 <div>
-                                    <AiOutlineFacebook />
+                                    <Link to="https://www.facebook.com/huynhquocnom/" target="_blank">
+                                        <AiOutlineFacebook />
+                                    </Link>
                                 </div>
                                 <div>
-                                    <AiOutlineInstagram />
+                                    <Link to="https://www.instagram.com/_quoc._.nam/" target="_blank">
+                                        <AiOutlineInstagram />
+                                    </Link>
                                 </div>
                                 <div>
                                     <AiOutlineLinkedin />   
@@ -74,7 +84,8 @@ const Footer = () => {
                 </div>
             </div>
         </div>
-    </footer>;
+    </footer>
+    );
 };
 
 export default memo(Footer);

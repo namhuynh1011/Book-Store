@@ -14,14 +14,10 @@ import img5Feat from "assets/users/image/featured/ketromsach.jpg";
 import img6Feat from "assets/users/image/featured/thuchoem.jpg";
 import img7Feat from "assets/users/image/featured/Atackontitan.jpg";
 import img8Feat from "assets/users/image/featured/goctoiansaumoicaunoi.jpg";
-
-
-
 import "./style.scss";
 import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
-import { AiOutlineEye, AiOutlineShoppingCart } from "react-icons/ai";
-import { Link } from "react-router-dom";
-import { formatter } from "utils/fomater";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import ProductCard from "component/ProductCard";
 
 const HomePage = () => {
     const responsive = {
@@ -184,27 +180,10 @@ const HomePage = () => {
             tabList.push(<Tab key={index}>{data[key].title}</Tab>);
             const tabPanel = [];
             data[key].products.forEach((item, j) => {
-                tabPanel.push(<div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={j}>
-                    <div className="featured_item pl-pr-10">
-                        <div className="featured_item_pic" >
-                            <img src={item.img} alt={item.name} className="featured_image" />
-                            <ul className="featured_item_pic_hover">
-                                <li>
-                                    <AiOutlineEye />
-                                </li>
-                                <li>
-                                    <AiOutlineShoppingCart />
-                                </li>
-                            </ul>
-                        </div>
-                        <div className="featured_item_text">
-                            <h6>
-                                <Link to="">{item.name}</Link>
-                            </h6>
-                            <h5>{formatter(item.price)}</h5>
-                        </div>
-                    </div>
-                </div>);
+                tabPanel.push(
+                    <div className="col-lg-3 col-md-4 col-sm-6 col-xs-12" key={j}>
+                        <ProductCard name={item.name} img={item.img} price={item.price}  />
+                    </div>);
             });
             tabPanels.push(tabPanel);
         });
@@ -254,7 +233,7 @@ const HomePage = () => {
                             <h3>Truyện hay</h3>
                             <p>100% xuất bản<br />chính gốc.</p>
                             <button className="buy_now">
-                                <AiOutlineShoppingCart className="icon"/>
+                                <AiOutlineShoppingCart className="icon" />
                                 MUA NGAY
                             </button>
                         </div>
@@ -267,7 +246,7 @@ const HomePage = () => {
                             <h3>Tiểu Thuyết</h3>
                             <p>Ý nghĩa<br />sâu sắc .</p>
                             <button className="buy_now">
-                                <AiOutlineShoppingCart className="icon"/>
+                                <AiOutlineShoppingCart className="icon" />
                                 MUA NGAY
                             </button>
                         </div>
