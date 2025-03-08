@@ -3,5 +3,6 @@ export const ROUTERS = {
         HOME: "",
         PROFILE: "profile",
         PRODUCTS: "/san-pham",
+        PRODUCT: "/san-pham/chitiet/:id",
     }
 }
