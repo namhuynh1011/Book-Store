@@ -11,7 +11,7 @@ const BreadCrumb = (props) => {
             <div className="breadcrumb_option">
                 <ul>
                     <li className="link">
-                        <Link to={ROUTERS.USER.HOME}>Trang Chu</Link>
+                        <Link to={ROUTERS.USER.HOME}>Trang Chủ</Link>
                     </li>
                     <li>
                         {props.name}
