@@ -76,3 +76,34 @@
         }
     }
 }
+
+.product_detail_tab {
+    margin: 20px 20px;
+
+    h4 {
+        text-align: center;
+        position: relative;
+        margin-bottom: 20px;
+
+        &::after {
+            position: absolute;
+            right: 0;
+            top: 12px;
+            height: 1px;
+            width: 43%;
+            background: white;
+            content: "";
+
+        }
+
+        &::before {
+            position: absolute;
+            right: 0;
+            top: 12px;
+            height: 1px;
+            width: 43%;
+            background: white;
+            content: "";
+        }
+    }
+}
