@@ -24,20 +24,41 @@ const ShoppingCartPage = () => {
             <tbody>
               <tr>
                 <td className="shopping_cart_item">
-                  <img src="https://via.placeholder.com/50"
-                   alt="product_pic" />
+                  <img src="https://via.placeholder.com/50" alt="product_pic" />
                   <h4>Ten San Pham 1</h4>
                 </td>
                 <td>{formatter(200000)}</td>
-                <td><Quantity quantity="2" hasAddToCart={false}/></td>
+                <td>
+                  <Quantity quantity="2" hasAddToCart={false} />
+                </td>
                 <td>{formatter(400000)}</td>
                 <td className="icon_close">
-                  <AiOutlineClose/>
+                  <AiOutlineClose />
                 </td>
               </tr>
-              
             </tbody>
           </table>
+        </div>
+        <div className="row">
+          <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <div className="shopping_continue">
+              <h3>Mã Giảm Giá</h3>
+              <div className="shopping_discount">
+                <input placeholder="Nhập mã giảm giá" />
+                <button type="button"  className="button_submit">Áp Dụng</button>
+              </div>
+            </div>
+          </div>
+          <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+            <div className="shopping_checkout">
+              <h2>Tổng đơn:</h2>
+              <ul>
+                <li>Số Lượng: <span>{2}</span></li>
+                <li>Thành Tiền: <span>{formatter(200000)}</span></li>
+              </ul>
+              <button type="button" className="button_submit">Thanh Toán</button>
+            </div>
+          </div>
         </div>
       </div>
     </>
