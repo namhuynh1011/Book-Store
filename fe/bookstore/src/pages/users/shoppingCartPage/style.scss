@@ -1,0 +1,54 @@
+@use "sass:map";
+@import "style/pages/all";
+
+
+.table_cart {
+    overflow-y: auto;
+    table {
+        width: 100%;
+
+        thead tr th {
+            text-align: start;
+        }
+
+        td, th {
+            padding: 20px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .shopping_cart_item {
+            display: flex;
+            align-items: center;
+            column-gap: 20px;
+
+
+            @include Responsive($WIDE_MOBILE) {
+                flex-direction: column;
+
+            }
+
+            img {
+                width: 100px;
+                height: 100px;
+
+            }
+        }
+
+        .icon_close {
+            cursor: pointer;
+            
+            svg {
+                transform: rotate(0deg);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            &:hover {
+                color: red;
+                
+
+                svg {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+    }
+}

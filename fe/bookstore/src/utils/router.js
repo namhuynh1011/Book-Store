@@ -4,5 +4,7 @@ export const ROUTERS = {
         PROFILE: "profile",
         PRODUCTS: "/san-pham",
         PRODUCT: "/san-pham/chitiet/:id",
+        SHOPPING_CART: "/giohang",
+
     }
 }
