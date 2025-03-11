@@ -4,8 +4,12 @@ import "./style.scss";
 import { formatter } from "utils/fomater";
 import { Quantity } from "component";
 import { AiOutlineClose } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { ROUTERS } from "utils/router";
 
 const ShoppingCartPage = () => {
+
+  const navigate = useNavigate();
   return (
     <>
       <Breadcrumb name="Giỏ Hàng" />
@@ -56,7 +60,7 @@ const ShoppingCartPage = () => {
                 <li>Số Lượng: <span>{2}</span></li>
                 <li>Thành Tiền: <span>{formatter(200000)}</span></li>
               </ul>
-              <button type="button" className="button_submit">Thanh Toán</button>
+              <button type="button" className="button_submit" onClick={() => navigate(ROUTERS.USER.CHECKOUT) }>Thanh Toán</button>
             </div>
           </div>
         </div>

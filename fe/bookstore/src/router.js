@@ -7,6 +7,7 @@ import ProfilePage from "./pages/users/profilePage";
 import ProductsPage from "./pages/users/productsPage";
 import ProductDetailPage from "./pages/users/productDetailPage";
 import ShoppingCartPage from "pages/users/shoppingCartPage";
+import CheckOutPage from "pages/users/checkOutPage";
 
 const renderUserRouter = () => {
     const userRouters = [
@@ -30,6 +31,10 @@ const renderUserRouter = () => {
         {
             path: ROUTERS.USER.SHOPPING_CART,
             component: <ShoppingCartPage />
+        },
+        {
+            path: ROUTERS.USER.CHECKOUT,
+            component: <CheckOutPage />
         }
     ]
 
