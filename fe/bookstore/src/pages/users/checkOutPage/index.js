@@ -1,7 +1,6 @@
 import { memo } from "react";
 import Breadcrumb from "../theme/breadcrumb";
 import "./style.scss";
-import { Quantity } from "component";
 import { formatter } from "utils/fomater";
 
 const CheckOutPage = () => {
@@ -64,11 +63,7 @@ const CheckOutPage = () => {
                     </li>
                     <li>
                       <span>San Phẩm 4</span>
-                      <b>{formatter(40000)} ()1</b>
-                    </li>
-                    <li>
-                      <h4>Mã Giảm Giá</h4>
-                      <b>SVC783</b>
+                      <b>{formatter(40000)} (1)</b>
                     </li>
                     <li className="checkout_order_subtotal">
                       <h3>Tổng Đơn</h3>

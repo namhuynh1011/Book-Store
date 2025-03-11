@@ -1,6 +1,6 @@
 import { memo } from "react"
 import Headers from "../header"
-import Footer from "../footer"
+import Footer from "../../../common/footer"
 
 const MasterLayout = ({children,  ...props}) => {
     return (
@@ -8,7 +8,7 @@ const MasterLayout = ({children,  ...props}) => {
         <Headers/>
         {children }
         <Footer/>
-    </ div>
+    </ div>  
     );
 };
 
