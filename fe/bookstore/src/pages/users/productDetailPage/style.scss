@@ -1,6 +1,6 @@
 @use "sass:map";
 @import "style/pages/theme";
-
+@import "style/pages/all";
 .product_detail_pic {
     display: flex;
     column-gap: 10px;
@@ -105,5 +105,21 @@
             background: white;
             content: "";
         }
+
+        &::before,&::after {
+            @include Responsive($MEDIUM_DEVICE) {
+                width: 42%;
+            }
+            @include Responsive($TABLET_DEVICE) {
+                width: 38%;
+            }
+            @include Responsive($WIDE_MOBILE) {
+                width: 34%;
+            }
+            @include Responsive($SMALL_MOBILE) {
+                width: 29%;
+            }
+        }
+
     }
 }

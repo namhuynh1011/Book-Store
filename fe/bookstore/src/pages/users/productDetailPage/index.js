@@ -4,10 +4,11 @@ import "./style.scss";
 import cat1img from "assets/users/image/categories/truyen.jpg";
 import cat2img from "assets/users/image/categories/giaokhoa.jpg";
 import cat3img from "assets/users/image/categories/lichsu.jpg";
-import { AiOutlineCopy, AiOutlineEye, AiOutlineFacebook, AiOutlineInstagram, AiOutlineTwitter } from "react-icons/ai";
+import { AiOutlineCopy, AiOutlineEye, AiOutlineFacebook, AiOutlineInstagram } from "react-icons/ai";
 import { formatter } from "utils/fomater";
 import { ProductCard } from "component";
 import { featProducts } from "utils/common";
+import Quantity from "component/Quantity";
 
 const ProductDetailPage = () => {
 
@@ -17,7 +18,7 @@ const ProductDetailPage = () => {
             <Breadcrumb name="Chi Tiết Sản Phẩm" />
             <div className="container">
                 <div className="row">
-                    <div className="col-lg-6 product_detail_pic">
+                    <div className="col-lg-6 col-xl-12 col-md-12 col-sm-12 col-xs-12 product_detail_pic">
                         <img src={cat3img} alt="product-pic" />
                         <div className="main">
                             {imgs.map((item, key) => (
@@ -25,7 +26,7 @@ const ProductDetailPage = () => {
                             ))}
                         </div>
                     </div>
-                    <div className="col-lg-6 product_detail_text">
+                    <div className="col-lg-6 col-xl-12 col-md-12 col-sm-12 col-xs-12 product_detail_text">
                         <h2 className="">Truyen Hay</h2>
                         <div className="seen_icon">
                             <AiOutlineEye />
@@ -36,6 +37,7 @@ const ProductDetailPage = () => {
                             Book Store là một hệ thống bán sách đa dạng thể loại. Các bạn hãy đến
                             với cửa hàng của chúng tôi để có thể tìm được những cuốn sách mà bạn yêu thích.
                         </p>
+                        <Quantity />
                         <ul>
                             <li>
                                 <b>Tình Trạng: </b> <span>Còn hàng</span>
