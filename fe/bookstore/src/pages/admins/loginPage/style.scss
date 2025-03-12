@@ -4,6 +4,10 @@
 
 
 .login {
+
+    input {
+        width: calc(100% - 10px);
+    }
     min-height: 90vh;
     display: flex;
     align-items: center;

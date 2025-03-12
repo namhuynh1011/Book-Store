@@ -8,9 +8,9 @@ import ProductsPage from "./pages/users/productsPage";
 import ProductDetailPage from "./pages/users/productDetailPage";
 import ShoppingCartPage from "pages/users/shoppingCartPage";
 import CheckOutPage from "pages/users/checkOutPage";
-import LoginAdPage from "pages/admins/theme/loginPage";
+import LoginAdPage from "pages/admins/loginPage";
 import MasterAdLayout from "pages/admins/theme/masterAdLayout";
-import OrdersAdPage from "pages/admins/theme/ordersAdPage";
+import OrdersAdPage from "pages/admins/ordersAdPage";
 
 const renderUserRouter = () => {
     const userRouters = [
