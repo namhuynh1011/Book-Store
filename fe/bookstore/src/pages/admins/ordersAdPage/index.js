@@ -1,6 +1,29 @@
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import "./style.scss";
 import { formatter } from "utils/fomater";
+
+const STATUS = {
+  ORDERED: {
+    key: "ORDERED",
+    label: "Đã Đặt",
+    className: "orders_dropdown-item",
+  },
+  PREPARING: {
+    key: "PREPARING",
+    label: "Đang Chuẩn Bị",
+    className: "orders_dropdown-item",
+  },
+  DIVIVERED: {
+    key: "DIVIVERED",
+    label: "Đã Giao Hàng",
+    className: "orders_dropdown-item",
+  },
+  CANCELLED: {
+    key: "CANCELLED",
+    label: "Đã Hủy",
+    className: "orders_dropdown-item orders_dropdown-item--danger",
+  },
+};
 const OrderAdPage = () => {
   const orders = [
     {
@@ -18,6 +41,18 @@ const OrderAdPage = () => {
       status: "Chờ Xác Nhận",
     },
   ];
+
+  const [activedDropDown, setActivedDropDown] = useState(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      const isDropdown = event.target.closest(".orders_dropdown");
+      if(!isDropdown){
+        setActivedDropDown(null);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  },[])
   return (
     <div className="container">
       <div className="orders">
@@ -43,7 +78,30 @@ const OrderAdPage = () => {
                   <td>{formatter(item.total)}</td>
                   <td>{item.customerName}</td>
                   <td>{new Date(item.date).toLocaleDateString()}</td>
-                  <td>{item.status}</td>
+                  <td>
+                    <div className="orders_dropdown">
+                      <button
+                        className={`orders_action-button`}
+                        onClick={() => setActivedDropDown(item.id)}
+                      >
+                        Đã đặt
+                        <span className="arrow">▽</span>
+                      </button>
+                      {activedDropDown === item.id && (
+                        <div className="ordes_dropdown-menu">
+                          {Object.values(STATUS).map((status) => (
+                            <button
+                              key={status.key}
+                              className={status.className}
+                              onClick={() => setActivedDropDown(null)}
+                            >
+                              {status.label}
+                            </button>
+                          ))}
+                        </div>
+                      )} 
+                    </div>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -54,7 +112,9 @@ const OrderAdPage = () => {
           <div className="orders_patination">
             <div className="orders_page_numbers">
               <button className="orders_page_btn  ">-</button>
-              <button className="orders_page_btn orders_page_btn--active">1</button>
+              <button className="orders_page_btn orders_page_btn--active">
+                1
+              </button>
               <button className="orders_page_btn  ">2</button>
               <button className="orders_page_btn  ">3</button>
               <button className="orders_page_btn  ">4</button>
